@@ -1,0 +1,43 @@
+from abc import ABC, abstractmethod
+
+class Assessment(ABC):
+    def __init__(self, count):
+        self.count = count
+
+    @abstractmethod
+    def exam(self):
+        pass
+
+
+class Quiz(Assessment):
+    def exam(self):
+        print("Quiz")
+
+
+class Midterm(Assessment):
+    def exam(self):
+        print("Midterm")
+
+
+class Final(Assessment):
+    def exam(self):
+        print("Final")
+
+
+try:
+    n = int(input("Enter number of students: "))
+
+    if n < 0:
+        print("Invalid number")
+
+    elif n < 10:
+        Quiz(n).exam()
+
+    elif n <= 20:
+        Midterm(n).exam()
+
+    else:
+        Final(n).exam()
+
+except ValueError:
+    print("Enter a valid number")
